@@ -111,18 +111,18 @@ function rcmail_markasjunk2_update() {
 		spamobj = spamobj.parent();
 		hamobj = hamobj.parent();
 	}
-
+	// Larry theme toggles LI, whereas Elastic theme toggles A, so we have to update both elements
 	if (rcmail.env.markasjunk2_override || rcmail.is_multifolder_listing()) {
-		spamobj.show();
-		hamobj.show();
+		spamobj.show(); spamobj.find('a').show();
+		hamobj.show(); hamobj.find('a').show();
 	}
 	else if (rcmail.env.markasjunk2_spam_mailbox && rcmail.env.mailbox != rcmail.env.markasjunk2_spam_mailbox) {
-		spamobj.show();
-		hamobj.hide();
+		spamobj.show(); spamobj.find('a').show();
+		hamobj.hide(); hamobj.find('a').hide();
 	}
 	else {
-		spamobj.hide();
-		hamobj.show();
+		spamobj.hide(); spamobj.find('a').hide();
+		hamobj.show(); hamobj.find('a').show();
 	}
 }
 
